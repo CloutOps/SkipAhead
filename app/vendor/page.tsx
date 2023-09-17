@@ -51,7 +51,7 @@ export default function Home() {
 
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
         {products.map((product) => {
-          return <ProductCard {...product} />;
+          return <ProductCard key={product.id} {...product} />;
         })}
       </div>
     </main>
