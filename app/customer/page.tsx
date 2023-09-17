@@ -11,21 +11,21 @@ export default function Home() {
   const products: Product[] = [
     {
       id: 1,
-      title: "API product from Vendor1",
-      description: "API product from Vendor1",
-      price: 4.2,
+      title: "Segfaults",
+      description: "it will end you",
+      price: 400.2,
     },
     {
       id: 2,
-      title: "API product from Vendor1",
-      description: "API product from Vendor1",
-      price: 9.1,
+      title: "Free hair loss",
+      description: "shine it like it's 1999",
+      price: 99999,
     },
     {
       id: 3,
-      title: "API product from Vendor1",
-      description: "API product from Vendor1",
-      price: 5.5,
+      title: "back problems",
+      description: "do you even need a back bro?",
+      price: 0,
     }
   ];
 
