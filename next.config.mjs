@@ -9,6 +9,7 @@ const config = {
     defaultLocale: "en",
   },
   experimental: {
+    serverActions: true,
     serverMinification: true,
     swcMinify: true,
   },
