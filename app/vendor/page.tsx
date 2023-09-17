@@ -5,22 +5,13 @@ import ProductCard from "../_components/ProductCardVendor";
 import { Product } from "../types";
 import { useUser } from "@clerk/nextjs";
 
+let idTemp = 1;
+
 export default function Home() {
-  const { isSignedIn, user } = useUser();
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      title: "Product 1",
-      description: "This is a product",
-      price: 10,
-    },
-    {
-      id: 2,
-      title: "Product 2",
-      description: "This is a product",
-      price: 10,
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [tempProductName, setProductName] = useState<string>();
+  const [tempProductDescription, setProductDescription] = useState<string>("");
+  const [tempProductPrice, setProductPrice] = useState<string>("0");
 
   const addProduct = (product: Product) => {
     setProducts([...products, product]);
@@ -36,16 +27,42 @@ export default function Home() {
       </h1>
 
       <div className="divider"></div>
-
+      <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+        <input
+          type="text"
+          name="title"
+          placeholder="Product Name"
+          onChange={(productName) => {
+            setProductName(productName.target.value);
+          }}
+        ></input>
+        <input
+          type="text"
+          name="description"
+          placeholder="Product Description"
+          onChange={(productDescription) => {
+            setProductDescription(productDescription.target.value);
+          }}
+        />
+        <input
+          type="text"
+          name="price"
+          placeholder="Product Price"
+          onChange={(productPrice) => {
+            setProductPrice(productPrice.target.value);
+          }}
+        ></input>
+      </div>
       <button
         className="btn btn-primary"
         onClick={() => {
           addProduct({
-            id: 3,
-            title: "Product 3",
-            description: "This is a product",
-            price: 10,
+            id: idTemp,
+            title: idTemp + "). " + tempProductName,
+            description: tempProductDescription,
+            price: Number(tempProductPrice),
           });
+          idTemp += 1;
         }}
       >
         Add Card
