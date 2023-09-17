@@ -1,12 +1,13 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "skipahead",
+  "version": "4.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "init:env": "cp .env.example .env"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.23.5",
