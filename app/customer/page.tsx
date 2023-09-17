@@ -1,6 +1,7 @@
+"use client";
+
 import ProductCard from "../_components/ProductCardCustomer";
 import { Product } from "../types";
-
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
