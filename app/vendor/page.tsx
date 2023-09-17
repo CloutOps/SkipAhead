@@ -39,13 +39,8 @@ export default function Home() {
   // Function to delete a specific product by its id
   const deleteProduct = (productId: number) => {
     // Use filter to create a new array without the product to be deleted
-    const updatedProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(updatedProducts); // Update the state with the modified array
-    if (idTemp - 1 >= 0) {
-      setIdTemp(idTemp - 1);
-    }
+    setProducts([]); // Update the state with the modified array
+    setIdTemp(0);
   };
 
   const fetchProducts = async () => {
@@ -152,7 +147,8 @@ export default function Home() {
         <span className="bg-gradient-to-br from-blue-600 to-green-400 bg-clip-text text-transparent box-decoration-clone">
           Welcome
         </span>
-        , {user?.fullName ? user?.fullName : user?.username}
+        , {user?.fullName ? user?.fullName : user?.username}... if that is your
+        real name... 🤔
       </h1>
 
       <div className="divider"></div>
