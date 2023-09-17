@@ -1,4 +1,4 @@
-import ProductCard from "../_components/ProductCardVendor";
+import ProductCard from "../_components/ProductCardCustomer";
 import { Product } from "../types";
 
 
@@ -20,7 +20,6 @@ export default function Home() {
       description: "API product from Vendor1",
       price: 9.1,
     },
-    // third product
     {
       id: 3,
       title: "API product from Vendor1",
