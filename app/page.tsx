@@ -18,10 +18,10 @@ export default function Home() {
 
       <div className="flex flex-row flex-wrap gap-4">
         <Link className="btn btn-outline btn-primary" href={"/vendor"}>
-          Vendor
+          Vendor (Sign In)
         </Link>
         <Link className="btn btn-outline btn-secondary" href={"/customer"}>
-          Customer
+          Customer (Public)
         </Link>
       </div>
     </main>
