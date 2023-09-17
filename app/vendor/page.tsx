@@ -28,7 +28,9 @@ export default function Home() {
     // Use filter to create a new array without the product to be deleted
     const updatedProducts = products.filter(product => product.id !== productId);
     setProducts(updatedProducts); // Update the state with the modified array
-    setIdTemp(idTemp - 1)
+    if ((idTemp - 1) >= 0) {
+      setIdTemp(idTemp - 1)
+    }
   };
 
   const fetchProducts = async () => {
