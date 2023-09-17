@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import ProductCard from "../_components/ProductCardVendor";
 import { Product } from "../types";
+import { useUser } from "@clerk/nextjs";
 
 let idTemp = 1;
 
@@ -11,6 +12,7 @@ export default function Home() {
   const [tempProductName, setProductName] = useState<string>();
   const [tempProductDescription, setProductDescription] = useState<string>("");
   const [tempProductPrice, setProductPrice] = useState<string>("0");
+  const { user } = useUser();
 
   const addProduct = (product: Product) => {
     setProducts([...products, product]);
@@ -22,14 +24,35 @@ export default function Home() {
         <span className="bg-gradient-to-br from-blue-600 to-green-400 bg-clip-text text-transparent box-decoration-clone">
           Welcome
         </span>
-        , Vendor McVendorface
+        , {user?.fullName ? user?.fullName : user?.username}
       </h1>
 
       <div className="divider"></div>
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
-        <input type="text" name="title" placeholder="Product Name" onChange={(productName) => { setProductName(productName.target.value); }}></input>
-        <input type="text" name="description" placeholder="Product Description" onChange={(productDescription) => { setProductDescription(productDescription.target.value); }} />
-        <input type="text" name="price" placeholder="Product Price" onChange={(productPrice) => { setProductPrice(productPrice.target.value); }}></input>
+        <input
+          type="text"
+          name="title"
+          placeholder="Product Name"
+          onChange={(productName) => {
+            setProductName(productName.target.value);
+          }}
+        ></input>
+        <input
+          type="text"
+          name="description"
+          placeholder="Product Description"
+          onChange={(productDescription) => {
+            setProductDescription(productDescription.target.value);
+          }}
+        />
+        <input
+          type="text"
+          name="price"
+          placeholder="Product Price"
+          onChange={(productPrice) => {
+            setProductPrice(productPrice.target.value);
+          }}
+        ></input>
       </div>
       <button
         className="btn btn-primary"
