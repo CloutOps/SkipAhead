@@ -12,6 +12,7 @@ export default function Home() {
   const [tempProductName, setProductName] = useState<string>();
   const [tempProductDescription, setProductDescription] = useState<string>("");
   const [tempProductPrice, setProductPrice] = useState<string>("0");
+  const { user } = useUser();
 
   const addProduct = (product: Product) => {
     setProducts([...products, product]);
