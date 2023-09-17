@@ -11,7 +11,8 @@ export const revalidate = 0;
 export const fetchCache = "force-no-store";
 
 export default function Home() {
-  let idTemp = 1;
+  // let idTemp = 0;
+  const [idTemp, setIdTemp] = useState<number>(0);
   const [products, setProducts] = useState<Product[]>([]);
   const [tempProductName, setProductName] = useState<string>();
   const [tempProductDescription, setProductDescription] = useState<string>("");
@@ -20,6 +21,14 @@ export default function Home() {
 
   const addProduct = (product: Product) => {
     setProducts([...products, product]);
+  };
+
+  // Function to delete a specific product by its id
+  const deleteProduct = (productId: number) => {
+    // Use filter to create a new array without the product to be deleted
+    const updatedProducts = products.filter(product => product.id !== productId);
+    setProducts(updatedProducts); // Update the state with the modified array
+    setIdTemp(idTemp - 1)
   };
 
   const fetchProducts = async () => {
@@ -90,13 +99,13 @@ export default function Home() {
       <button
         className="btn btn-primary"
         onClick={() => {
+          setIdTemp(idTemp + 1)
           addProduct({
             id: idTemp,
-            title: idTemp + "). " + tempProductName,
+            title: idTemp + ". " + tempProductName,
             description: tempProductDescription,
             price: Number(tempProductPrice),
           });
-          idTemp += 1;
         }}
       >
         Add Card
@@ -104,12 +113,12 @@ export default function Home() {
 
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
         {products.map((product) => {
-          return <ProductCard key={product.id} {...product} />;
+          return <ProductCard key={product.id} product={product} deleteProduct={deleteProduct} />;
         })}
       </div>
 
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
-        <button className="btn btn-primary" onClick={() => {}}>
+        <button className="btn btn-primary" onClick={() => { }}>
           Summit All Products
         </button>
       </div>
