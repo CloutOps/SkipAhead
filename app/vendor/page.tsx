@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import ProductCard from "../_components/ProductCardVendor";
 import { Product } from "../types";
+import { useUser } from "@clerk/nextjs";
 
 export default function Home() {
+  const { isSignedIn, user } = useUser();
   const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
@@ -30,7 +32,7 @@ export default function Home() {
         <span className="bg-gradient-to-br from-blue-600 to-green-400 bg-clip-text text-transparent box-decoration-clone">
           Welcome
         </span>
-        , Vendor McVendorface
+        , {user?.fullName ? user?.fullName : user?.username}
       </h1>
 
       <div className="divider"></div>
