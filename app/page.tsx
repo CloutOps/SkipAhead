@@ -10,7 +10,7 @@ export default function Home() {
         Ahead
       </h1>
 
-      <h2 className="text-xl">SOMETHING HERE</h2>
+      <h2 className="text-xl">This POS isn't a PoS!</h2>
 
       <div className="divider"></div>
 
