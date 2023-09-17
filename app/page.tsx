@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex flex-col text-center items-center justify-center px-4 py-16 gap-4">
@@ -15,8 +17,12 @@ export default function Home() {
       <p className="text-xl">Enter:</p>
 
       <div className="flex flex-row flex-wrap gap-4">
-        <button className="btn btn-outline btn-primary">Vendor</button>
-        <button className="btn btn-outline btn-secondary">Customer</button>
+        <Link className="btn btn-outline btn-primary" href={"/vendor"}>
+          Vendor
+        </Link>
+        <Link className="btn btn-outline btn-secondary" href={"/customer"}>
+          Customer
+        </Link>
       </div>
     </main>
   );
