@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex flex-col text-center items-center justify-center px-4 py-16 gap-4">
-      <h1 className="text-3xl sm:text-6xl font-bold">
+      <h1 className="text-3xl sm:text-6xl font-bold animate-bounce">
         <span className="bg-gradient-to-br from-blue-600 to-green-400 bg-clip-text text-transparent box-decoration-clone">
           Skip
         </span>
@@ -17,10 +17,16 @@ export default function Home() {
       <p className="text-xl">Enter:</p>
 
       <div className="flex flex-row flex-wrap gap-4">
-        <Link className="btn btn-outline btn-primary" href={"/vendor"}>
+        <Link
+          className="btn btn-outline btn-primary hover:animate-spin"
+          href={"/vendor"}
+        >
           Vendor (Sign In)
         </Link>
-        <Link className="btn btn-outline btn-secondary" href={"/customer"}>
+        <Link
+          className="btn btn-outline btn-secondary hover:animate-spin"
+          href={"/customer"}
+        >
           Customer (Public)
         </Link>
       </div>
