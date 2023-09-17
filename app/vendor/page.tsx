@@ -26,11 +26,13 @@ export default function Home() {
       </h1>
 
       <div className="divider"></div>
+
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
         <input type="text" name="title" placeholder="Product Name" onChange={(productName) => { setProductName(productName.target.value); }}></input>
         <input type="text" name="description" placeholder="Product Description" onChange={(productDescription) => { setProductDescription(productDescription.target.value); }} />
         <input type="text" name="price" placeholder="Product Price" onChange={(productPrice) => { setProductPrice(productPrice.target.value); }}></input>
       </div>
+
       <button
         className="btn btn-primary"
         onClick={() => {
@@ -50,6 +52,15 @@ export default function Home() {
         {products.map((product) => {
           return <ProductCard key={product.id} {...product} />;
         })}
+      </div>
+
+      <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+        <button
+          className="btn btn-primary"
+          onClick={() => { }}
+        >
+          Summit All Products
+        </button>
       </div>
     </main>
   );
