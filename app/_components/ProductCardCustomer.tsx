@@ -2,16 +2,14 @@ import { Product } from "../types";
 import { useState } from "react";
 
 const ProductCard = ({ title, description, price }: Product) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(Math.random() * 100);
 
   const addQuantity = () => {
     setQuantity(quantity + 1);
   };
 
   const subtractQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
+      setQuantity(quantity - 1.0);
   };
 
   const deleteQuantity = () => {
@@ -21,9 +19,9 @@ const ProductCard = ({ title, description, price }: Product) => {
   return (
     <div className="card w-96 bg-primary text-primary-content">
       <div className="flex justify-end p-2 items-center">
-        <button className="btn bg-red-500 text-white p-3 m-3 rounded-full" onClick={subtractQuantity}>-</button>
+        <button className="btn bg-red-500 text-white p-3 m-3 rounded-full" onClick={addQuantity}>-</button>
         <span className="text-2xl">{quantity}</span>
-        <button className="btn bg-green-500 text-white p-3 m-3 rounded-full" onClick={addQuantity}>+</button>
+        <button className="btn bg-green-500 text-white p-3 m-3 rounded-full" onClick={subtractQuantity}>+</button>
       </div>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
