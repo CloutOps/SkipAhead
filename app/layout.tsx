@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html
-        data-theme="dark"
+        data-theme="light"
         lang="en"
         className="h-[100%] w-[100%] fixed overflow-y-auto"
       >
