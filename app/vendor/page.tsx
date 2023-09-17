@@ -1,13 +1,17 @@
 "use client";
 
-import { use, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../_components/ProductCardVendor";
 import { Product } from "../types";
 import { useUser } from "@clerk/nextjs";
 
-let idTemp = 1;
+// Disables caching for this page... we could get into this but we don't have time :)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
 export default function Home() {
+  let idTemp = 1;
   const [products, setProducts] = useState<Product[]>([]);
   const [tempProductName, setProductName] = useState<string>();
   const [tempProductDescription, setProductDescription] = useState<string>("");
@@ -17,6 +21,28 @@ export default function Home() {
   const addProduct = (product: Product) => {
     setProducts([...products, product]);
   };
+
+  const fetchProducts = async () => {
+    // Replace this with
+    // const res = await fetch("/api/products");
+    // const products = await res.json();
+    const mockApiReturn = [
+      {
+        id: 1,
+        title: "Product from API",
+        description: "Product from API",
+        price: 4.2,
+      },
+    ];
+
+    setProducts(mockApiReturn);
+  };
+
+  // Initial fetch from DB
+  useEffect(() => {
+    // This runs only once on initial load
+    fetchProducts();
+  }, []);
 
   return (
     <main className="flex flex-col text-center items-center justify-center px-4 py-16 gap-4">
@@ -78,10 +104,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-row flex-wrap items-center justify-center gap-4">
-        <button
-          className="btn btn-primary"
-          onClick={() => { }}
-        >
+        <button className="btn btn-primary" onClick={() => {}}>
           Summit All Products
         </button>
       </div>
